@@ -373,10 +373,16 @@ heart:active {
   margin-bottom: 250px;
 }
 
-.icon-nav {
+.icon-nav-lr {
   position: absolute;
   left: 12px;
   bottom: 14px;
+}
+
+.icon-nav-rl {
+  position: absolute;
+  left: 12px;
+  top: 34px;
 }
 
 .navbar-half1 {
