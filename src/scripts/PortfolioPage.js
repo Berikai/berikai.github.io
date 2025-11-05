@@ -185,10 +185,13 @@ export const PortfolioPage = () => {
         hideAboutPage();
     }
 
+    // Disabled delay and rotation for smoother experience, they were causing jankiness, can be re-enabled later
     portfolioPageState.show = !portfolioPageState.show;
     if(portfolioPageState.show) {
-        showPortfolioPage(willBeDelayed, true);
+        //showPortfolioPage(willBeDelayed, true);
+        showPortfolioPage(false, false);
     } else {
-        hidePortfolioPage(willBeDelayed, true);
+        //hidePortfolioPage(willBeDelayed, true);
+        hidePortfolioPage(false, false);
     }
 }
