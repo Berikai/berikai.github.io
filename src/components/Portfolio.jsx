@@ -1,6 +1,6 @@
 import React from 'preact/compat';
 
-import portfolioBTE from '../assets/img/portfolio_bte.png';
+import portfolioBTE from '../assets/img/portfolio_bte2.png';
 import portfolioBTEW from '../assets/img/portfolio_btew.png';
 import portfolioPixbud from '../assets/img/portfolio_pixbud.gif';
 import portfolioOasis from '../assets/img/portfolio_oasis.png';
