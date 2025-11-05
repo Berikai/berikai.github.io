@@ -18,7 +18,7 @@ export default function App() {
         setTimeout(() => {
             //Card3D();
             SwitchListener();
-        }, 2000);
+        }, 2600);
     }, []);
     
     return (
