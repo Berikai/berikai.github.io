@@ -6,6 +6,7 @@
   "type": "module",
   "dependencies": {
     "@aduh95/preact-fontawesome": "^0.1.5",
+    "@fortawesome/free-brands-svg-icons": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "preact": "^10.19.3",
     "vite": "^7.2.0"

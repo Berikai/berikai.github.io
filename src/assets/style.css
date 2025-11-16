@@ -150,18 +150,27 @@ heart:active {
 .portfolio-element {
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 5px;
   width: 100%;
-  height: 68px;
   border-radius: 5px 20px 5px 20px;
   overflow: hidden;
   transition: ease 0.2s;
 }
 
+.portfolio-element-inner {
+  display: flex;
+  flex-direction: row;
+  height: 88px;
+}
+
 .portfolio-element:hover {
   transform: scale(1.07);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px;
+}
+
+.portfolio-element.reverse {
+  flex-direction: row-reverse;
 }
 
 .portfolio-element-overlay {
@@ -189,7 +198,6 @@ heart:active {
   display: flex;
   flex-direction: column;
   width: 75%;
-  height: 68px;
   padding-top: 6px;
   padding-left: 10px;
   padding-right: 6px;
@@ -206,6 +214,25 @@ heart:active {
   font-family: 'Montserrat', sans-serif;
   font-size: 10px;
   font-weight: 300;
+}
+
+.portfolio-element-info.framework {
+  margin-right: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 5px;
+  align-items: center;
+  margin-top: 5px;
+  font-size: 12px;
+  font-style: italic;
+  color: #707070c7;
+}
+
+.portfolio-element-info.framework .portfolio-element-info.bold {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
 }
 
 .portfolio-img {
