@@ -89,7 +89,7 @@ export default function Portfolio() {
                         </div>
                     </div>
                 </div>
-                <div className="text-about" style="margin-top: -4px;">and many more, check my <a href="https://github.com/berikai" target="_blank" rel="noreferrer">Github</a>!</div>
+                <div className="text-about" style="margin-top: 4px;">and many more, check my <a href="https://github.com/berikai" target="_blank" rel="noreferrer">Github</a>!</div>
                 {/*}<div className="portfolio-element">
                     <a className="portfolio-element-overlay" target="_blank" rel="noreferrer"
                     href="https://bitwig.berikai.dev"></a>
