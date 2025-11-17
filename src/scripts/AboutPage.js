@@ -43,7 +43,7 @@ export const showAboutPage = () => {
     appAbout.style.display = "none";
     appAboutExtra.style.display = "flex";
 
-    card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease";
+    card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease, height 0.2s ease";
     card.style.transform = "rotateZ(-90deg)";
     pp.style.borderRadius = "70px 15px 70px 15px";
     pp.style.transform = "rotateZ(90deg)";
@@ -126,7 +126,7 @@ export const hideAboutPage = () => {
         pp.style.transition = 'ease 0.2s';
     }
 
-    card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease";
+    card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease, height 0.2s ease";
     card.style.transform = "rotateZ(0deg)";
     pp.style.borderRadius = "15px 70px 15px 70px";
     pp.style.transform = "rotateZ(0deg)";

@@ -26,7 +26,7 @@ export const cardFollowCursor3D = (card) => (e) => {
     const angleY = (window.innerHeight / 2 - e.pageY) / 20;
     const angleZ = cardStyle.rotation;
     
-    card.style.transition = `transform 0.1s ease, box-shadow 0.1s ease, border-radius 0.5s ease`
+    card.style.transition = `transform 0.1s ease, box-shadow 0.1s ease, border-radius 0.5s ease, height 0.2s ease`
     card.style.transform = `rotateZ(${angleZ}deg) rotateY(${angleZ == 0 ? angleX : angleY * -1}deg) rotateX(${(angleZ == 0 ? angleY * -1 : angleX * -1)}deg)`;
     card.style.boxShadow = `${angleZ == 0 ? angleX * -1 : angleY}px ${angleZ == 0 ? angleY * -1 : angleX * -1}px 30px rgba(0, 0, 0, 0.4) `;
 }
@@ -34,7 +34,7 @@ export const cardFollowCursor3D = (card) => (e) => {
 const cardResetState3D = (card, switchbox) => () => {
     switchbox.style.opacity = "0";
     
-    card.style.transition = `transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease`;
+    card.style.transition = `transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease, height 0.2s ease`;
     card.style.transform = `rotateZ(${cardStyle.rotation}deg) rotateY(0deg) rotateX(0deg)`;
     card.style.boxShadow = `0px 0px 15px rgba(0, 0, 0, 0.4)`;
 }

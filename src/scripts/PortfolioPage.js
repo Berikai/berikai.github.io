@@ -70,14 +70,14 @@ export const showPortfolioPage = (delay, rotate) => {
 
     if(rotate) {
         if(portfolioPageState.onAbout) {
-            card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease";
+            card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease, height 0.2s ease";
             card.style.transform = "rotateX(0deg)";
             portfolioPageState.onAbout = false;
         } else {
             card.style.transitionProperty = 'none';
             card.style.transform = "rotateX(360deg)";
             setTimeout(() => {
-                card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease";
+                card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease, height 0.2s ease";
                 card.style.transform = "rotateX(0deg)";
                 if(portfolioPageState.card3D) {
                     DisableCard3D();
@@ -155,14 +155,14 @@ export const hidePortfolioPage = (delay, rotate) => {
 
     if(rotate) {
         if(portfolioPageState.onAbout) {
-            card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease";
+            card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease, height 0.2s ease";
             card.style.transform = "rotateX(0deg)";
             portfolioPageState.onAbout = false;
         } else {
             card.style.transitionProperty = 'none';
             card.style.transform = "rotateX(360deg)";
             setTimeout(() => {
-                card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease";
+                card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease, height 0.2s ease";
                 card.style.transform = "rotateX(0deg)";
                 if(portfolioPageState.card3D) {
                     DisableCard3D();
