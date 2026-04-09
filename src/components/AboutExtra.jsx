@@ -14,7 +14,7 @@ export default function About() {
                 I create dubstep and drum and bass oriented experimental music. You can check out my music on <a href="https://soundcloud.com/verdantbass" target="_blank" rel="noreferrer">Soundcloud</a>.
             </p>
             <p className="text-about">
-                I'm currently studying mechatronics engineering (sophomore) in <i>Izmir University of Economics</i>.
+                I'm currently studying mechatronics engineering at <i>Izmir University of Economics</i>.
             </p>
         </div>
     )
