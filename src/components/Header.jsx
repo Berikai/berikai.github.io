@@ -1,67 +1,111 @@
-import React, { useLayoutEffect } from 'preact/compat';
-import { callbacks, Card3D, DisableCard3D } from '../scripts/Card3D';
+import React, { useLayoutEffect, useState } from 'preact/compat';
+import {
+    useAppState,
+    setMode3DState,
+    toggleMode3D,
+    applyCardOrientationForPage,
+    isMobileViewport
+} from '../scripts/navigationStore';
+import { SwitchListener } from '../scripts/Card3D';
+
+let hasPlayedIntro = false;
 
 export default function Header() {
-    const [mode3D, setMode3D] = React.useState(false);
+    const { mode3D, activePage } = useAppState();
+    const [hoveringPP, setHoveringPP] = useState(false);
+    const [ReadyFor3D, setReadyFor3D] = useState(false);
 
-    
+    const isAbout = activePage === 'about';
+    const isPortfolio = activePage === 'portfolio';
+
     useLayoutEffect(() => {
-        const pp = document.getElementById("pp");
-        const ppLogo = document.querySelector(".pp_logo");
-        const text3d = document.querySelector(".threeD-info");
-        pp.addEventListener("mouseleave" , () => {
-            text3d.style.opacity = "0";
-            text3d.style.scale = "1.0";
-        });
-
-        pp.addEventListener("mouseenter" , () => {
-            ppLogo.style.transition = 'ease 0.2s';
-            text3d.style.opacity = "1";
-            text3d.style.scale = "1.05";
-        });
-
-        pp.addEventListener("mousedown" , (e) => {
-            text3d.style.opacity = "1";
-            text3d.style.scale = "1.1";
-            text3d.style.display = "none";
-        });
-
-        pp.addEventListener("mouseup" , (e) => {
-            text3d.style.opacity = "1";
-            text3d.style.scale = "1.05";
-        });
-
-        if(localStorage.getItem("mode3D") === "true") {
-            setMode3D(true);
-            text3d.style.display = "none";
-            setTimeout(() => {
-                Card3D();
-                document.getElementById("pp").style.pointerEvents = "auto";
-            }, 2000);
-        } else {
-            setMode3D(false);
-            setTimeout(() => {
-                document.getElementById("pp").style.pointerEvents = "auto";
-            }, 2000);
+        if (activePage !== 'home') {
+            applyCardOrientationForPage(activePage, true);
         }
+
+        const revealApp = () => {
+            const app = document.querySelector('.App');
+            if (app) app.style.opacity = '1';
+        };
+        const fallbackTimer = setTimeout(revealApp, 450);
+
+        const readyTimer = setTimeout(() => {
+            setReadyFor3D(true);
+            if (localStorage.getItem('mode3D') === 'true') {
+                setMode3DState(true);
+            }
+        }, 1450);
+
+        const safetyTimer = setTimeout(() => {
+            SwitchListener();
+        }, 3000);
+
+        return () => {
+            clearTimeout(fallbackTimer);
+            clearTimeout(readyTimer);
+            clearTimeout(safetyTimer);
+        };
     }, []);
 
+    const handleAvatarLoad = () => {
+        const app = document.querySelector('.App');
+        const card = document.querySelector('.Card');
+        const ppLogo = document.querySelector('.pp_logo');
+        if (app) app.style.opacity = '1';
+        if (hasPlayedIntro) return;
+        hasPlayedIntro = true;
+        if (card) card.style.animation = 'CardFrame 1.45s ease-in-out';
+        if (ppLogo) {
+            const useAboutIntro = activePage === 'about' && !isMobileViewport();
+            ppLogo.style.animation = `${useAboutIntro ? 'ProfileFrameAbout' : 'ProfileFrame'} 1.45s ease-in-out`;
+        }
+        setTimeout(() => {
+            if (card) card.style.animation = 'none';
+            if (ppLogo) ppLogo.style.animation = 'none';
+            SwitchListener();
+        }, 1500);
+    };
+
     return (
-        <header style="pointer-events: none;" className="App-header">
-            <p><a id="pp" onMouseDown={(e) => mode3D ? (setMode3D(false), DisableCard3D(), localStorage.setItem("mode3D", "false")) : (setMode3D(true), Card3D(), callbacks.cardFollowCursor3D(e), localStorage.setItem("mode3D", "true"))}>
-            <img
-                className="pp_logo" 
-                src="https://avatars.githubusercontent.com/u/18515671?v=4" 
-                alt="Berikai" 
-                onLoad={() => {
-                    document.querySelector(".App").style.opacity = 1;
-                    document.querySelector(".Card").style.animation = "CardFrame 2s ease-in-out";
-                    document.querySelector(".pp_logo").style.animation = "ProfileFrame 2s ease-in-out";
-                }}    
-                />
-                <p className="threeD-info">Tap to switch 3D</p>
-            </a></p>
-            <div className="username">Berikai<div className="aka">also known as Verdant</div></div>
+        <header
+            className={`App-header ${isAbout ? 'about-open' : ''} ${
+                isPortfolio ? 'portfolio-open' : ''
+            }`}
+        >
+            <p className="pp-wrapper">
+                <a
+                    id="pp"
+                    style={{ pointerEvents: ReadyFor3D && !isPortfolio ? 'auto' : 'none' }}
+                    onMouseEnter={() => setHoveringPP(true)}
+                    onMouseLeave={() => setHoveringPP(false)}
+                    onMouseDown={(e) => {
+                        e.preventDefault();
+                        toggleMode3D(e);
+                        setHoveringPP(false);
+                    }}
+                    title={mode3D ? 'Disable 3D tilt effect' : 'Enable 3D tilt effect'}
+                >
+                    <img
+                        className={`pp_logo ${isAbout ? 'about-open' : ''}`}
+                        src="https://avatars.githubusercontent.com/u/18515671?v=4"
+                        alt="Berikai"
+                        onLoad={handleAvatarLoad}
+                    />
+                    <span
+                        className={`threeD-info ${isAbout ? 'about-open' : ''}`}
+                        style={{
+                            opacity: hoveringPP && !mode3D ? 1 : 0,
+                            transform: isAbout ? undefined : hoveringPP ? 'scale(1.05)' : 'scale(1)'
+                        }}
+                    >
+                        Tap to switch 3D
+                    </span>
+                </a>
+            </p>
+            <div className={`username ${isAbout ? 'about-open' : ''}`}>
+                Berikai
+                <div className="aka">also known as Verdant</div>
+            </div>
         </header>
-    )
+    );
 }

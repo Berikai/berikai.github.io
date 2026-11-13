@@ -1,26 +1,30 @@
 import React from 'preact/compat';
 
 export const showModal = () => {
-    document.querySelector(".modal").style.opacity = "1";
-    document.querySelector(".modal").style.display = "flex";
-}
+    const modal = document.querySelector('.modal');
+    if (!modal) return;
+    modal.style.opacity = '1';
+    modal.style.display = 'flex';
+};
 
 const hideModal = () => {
-    document.querySelector(".modal").style.opacity = "0";
+    const modal = document.querySelector('.modal');
+    if (!modal) return;
+    modal.style.opacity = '0';
     setTimeout(() => {
-        document.querySelector(".modal").style.display = "none";
+        modal.style.display = 'none';
     }, 200);
-}
+};
 
 export default function Modal() {
     return (
         <div className="modal" onClick={() => hideModal()}>
-            <div className="modal-content"> 
-                <div className="modal-box dark">
-                    <text className={"dark"}>The page you are trying to view is currently in development.</text>
-                    <text className={"dark"}>Thank you for your patience.</text>
+            <div className="modal-content">
+                <div className="modal-box">
+                    <span>The page you are trying to view is currently in development.</span>
+                    <span>Thank you for your patience.</span>
                 </div>
             </div>
         </div>
-    )
+    );
 }
