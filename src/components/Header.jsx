@@ -37,6 +37,7 @@ export default function Header() {
         }, 1450);
 
         const safetyTimer = setTimeout(() => {
+            document.body.classList.add('intro-done');
             SwitchListener();
         }, 3000);
 
@@ -62,6 +63,7 @@ export default function Header() {
         setTimeout(() => {
             if (card) card.style.animation = 'none';
             if (ppLogo) ppLogo.style.animation = 'none';
+            document.body.classList.add('intro-done');
             SwitchListener();
         }, 1500);
     };

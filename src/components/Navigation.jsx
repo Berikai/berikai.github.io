@@ -41,20 +41,29 @@ export default function Navbar() {
             </div>
             <div className="navbar-half2">
                 <NavButton
+                    id="verdant-nav"
                     link
                     text={
                         <>
+                            <span className="verdant-particles" aria-hidden="true">
+                                <i />
+                                <i />
+                                <i />
+                                <i />
+                                <i />
+                                <i />
+                            </span>
                             <FontAwesomeIcon
                                 className="icon-nav-lr"
                                 size="xs"
                                 icon={faArrowUpRightFromSquare}
                             />
-                            <>Console</>
+                            <>Verdant</>
                         </>
                     }
                     rotation="lr"
                     isRotatedAbout={isAbout}
-                    href="https://console.berikai.dev"
+                    href="https://verdant.tr"
                 />
                 <NavButton
                     id="portfolio-nav"

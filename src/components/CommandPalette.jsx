@@ -82,11 +82,11 @@ export default function CommandPalette() {
             run: () => window.open('https://blog.berikai.dev', '_blank')
         },
         {
-            id: 'ext-console',
+            id: 'ext-verdant',
             group: 'Links',
-            label: 'Console (console.berikai.dev)',
-            icon: faTerminal,
-            run: () => window.open('https://console.berikai.dev', '_blank')
+            label: 'Verdant (verdant.tr)',
+            icon: faArrowUpRightFromSquare,
+            run: () => window.open('https://verdant.tr', '_blank')
         },
         {
             id: 'ext-github',
