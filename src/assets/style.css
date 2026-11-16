@@ -1620,7 +1620,7 @@ body.intro-done .verdant-particles i {
 }
 
 @media (hover: none), (max-width: 678px) {
-  #switch {
+  body.intro-done #switch {
     opacity: 0.55;
     pointer-events: auto;
   }
