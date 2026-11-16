@@ -1,3 +1,4 @@
+import portfolioAvionot from '../assets/img/portfolio_avionot.png';
 import portfolioBTE from '../assets/img/portfolio_bte2.png';
 import portfolioBTEAlt from '../assets/img/portfolio_bte.png';
 import portfolioCruncher from '../assets/img/portfolio_cruncher.png';
@@ -19,17 +20,40 @@ import {
     faGoogleDrive,
     faWindows,
     faRust,
-    faSvelte
+    faSvelte,
+    faWordpress
 } from '@fortawesome/free-brands-svg-icons';
 import {
     faWaveSquare,
     faCode,
     faTerminal,
     faNoteSticky,
-    faLink
+    faLink,
+    faServer
 } from '@fortawesome/free-solid-svg-icons';
 
 export const PROJECTS = [
+    {
+        id: 'avionot',
+        title: 'Avionot',
+        category: 'web',
+        status: 'Live',
+        year: '2026',
+        image: portfolioAvionot,
+        gallery: [portfolioAvionot],
+        shortInfo: 'SysOps at Avionot. Designed the avionot.com website and operate the IT backend of all operations.',
+        description:
+            'Avionot is a defence and aviation industry news platform. As SysOps, I designed the avionot.com website and operate the technical IT infrastructure and backend powering all of its operations.',
+        primaryUrl: 'https://avionot.com',
+        primaryLabel: 'Open Avionot',
+        githubUrl: null,
+        tech: [
+            { name: 'WordPress', icon: faWordpress, color: '#38bdf8' },
+            { name: 'CSS3', icon: faCss, color: '#74C0FC' },
+            { name: 'JavaScript', icon: faJs, color: '#FFD43B' },
+            { name: 'SysOps / IT', icon: faServer, color: '#10b981' }
+        ]
+    },
     {
         id: 'bitwig-theme-editor',
         title: 'Bitwig Theme Editor',
